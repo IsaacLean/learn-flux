@@ -16,5 +16,8 @@
     "react-router-component": "^0.26.1",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.5"
   }
 }

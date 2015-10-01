@@ -5,11 +5,18 @@ var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
 
-var _catalog = [
-	{id:1, title: 'Widget #1', cost: 1},
-	{id:2, title: 'Widget #2', cost: 2},
-	{id:3, title: 'Widget #3', cost: 3}
-];
+var _catalog = [];
+
+for(var i=0; i < 9; ++i) {
+	_catalog.push({
+		'id': 'Widget' + i,
+		'title': 'Widget #' + i,
+		'summary': 'Just a widget.',
+		'description': 'It is really just a widget!',
+		'img': '/assets/product.png',
+		'cost': i
+	});
+}
 
 var _cartItems = [];
 

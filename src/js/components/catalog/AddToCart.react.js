@@ -1,5 +1,5 @@
 var React = require('react');
-var AppActions = require('../actions/AppActions.js');
+var AppActions = require('../../actions/AppActions.js');
 
 var AddToCart = React.createClass({
 	handleClick: function() {
