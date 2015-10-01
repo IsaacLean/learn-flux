@@ -13,7 +13,7 @@ for(var i=0; i < 9; ++i) {
 		'title': 'Widget #' + i,
 		'summary': 'Just a widget.',
 		'description': 'It is really just a widget!',
-		'img': '/assets/product.png',
+		'img': '/assets/lookssogood.jpg',
 		'cost': i
 	});
 }
@@ -51,6 +51,18 @@ function _addItem(item) {
 	}
 }
 
+function _cartTotals() {
+	var qty = 0;
+	var total = 0;
+
+	_cartItems.forEach(function(cartItem) {
+		qty += cartItem.qty;
+		total += cartItem.qty * cartItem.cost;
+	});
+
+	return {'qty': qty, 'total': total};
+}
+
 var AppStore = assign(EventEmitter.prototype, {
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
@@ -70,6 +82,10 @@ var AppStore = assign(EventEmitter.prototype, {
 
 	getCatalog: function() {
 		return _catalog;
+	},
+
+	getCartTotals: function() {
+		return _cartTotals();
 	},
 
 	dispatcherIndex: AppDispatcher.register(function(payload) {

@@ -4,7 +4,7 @@ var AppStore = require('../stores/AppStore.js');
 var StoreWatchMixin = function(callback) {
 	return {
 		getInitialState: function() {
-			return callback();
+			return callback(this);
 		},
 
 		componentWillMount: function() {
@@ -16,7 +16,7 @@ var StoreWatchMixin = function(callback) {
 		},
 
 		_onChange: function() {
-			this.setState(callback());
+			this.setState(callback(this));
 		}
 	}
 }
