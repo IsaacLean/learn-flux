@@ -1,4 +1,4 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppDispatcher = require('../dispatchers/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
@@ -24,7 +24,7 @@ function _increaseItem(index) {
 
 function _decreaseItem(index) {
 	if(_cartItems[index].qty > 1) {
-		--__cartItems[index].qty;
+		--_cartItems[index].qty;
 	} else {
 		_removeItem(index);
 	}
@@ -44,9 +44,9 @@ function _addItem(item) {
 	}
 }
 
-var AppStore = assign(eventEmitter.prototype, {
+var AppStore = assign(EventEmitter.prototype, {
 	emitChange: function() {
-		this.emite(CHANGE_EVENT);
+		this.emit(CHANGE_EVENT);
 	},
 
 	addChangeListener: function(callback) {
@@ -65,7 +65,7 @@ var AppStore = assign(eventEmitter.prototype, {
 		return _catalog;
 	},
 
-	dispatcherIndex: AppDispatcher.register(function() {
+	dispatcherIndex: AppDispatcher.register(function(payload) {
 		var action = payload.action; // action from handleViewAction
 
 		switch(action.actionType) {

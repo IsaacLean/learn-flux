@@ -8,21 +8,21 @@ var AppActions = {
 			item: item
 		})
 	},
-	removeItem: function(item) {
+	removeItem: function(index) {
 		AppDispatcher.handleViewAction({
 			actionType: AppConstants.REMOVE_ITEM,
 			index: index
 		})
 	},
 	
-	decreaseItem: function(item) {
+	decreaseItem: function(index) {
 		AppDispatcher.handleViewAction({
 			actionType: AppConstants.DECREASE_ITEM,
 			index: index
 		})
 	},
 
-	increaseItem: function(item) {
+	increaseItem: function(index) {
 		AppDispatcher.handleViewAction({
 			actionType: AppConstants.INCREASE_ITEM,
 			index: index
