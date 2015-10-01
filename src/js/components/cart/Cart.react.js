@@ -3,23 +3,14 @@ var AppStore = require('../../stores/AppStore.js');
 var RemoveFromCart = require('./RemoveFromCart.react.js');
 var Increase = require('./Increase.react.js');
 var Decrease = require('./Decrease.react.js');
+var StoreWatchMixin = require('../../mixins/StoreWatchMixin.js');
 
 function cartItems() {
 	return {items: AppStore.getCart()};
 }
 
 var Cart = React.createClass({
-	getInitialState: function() {
-		return cartItems();
-	},
-
-	componentWillMount: function() {
-		AppStore.addChangeListener(this._onChange);
-	},
-
-	_onChange: function() {
-		this.setState(cartItems());
-	},
+	mixins: [StoreWatchMixin(cartItems)],
 
 	render: function() {
 		var total = 0;
